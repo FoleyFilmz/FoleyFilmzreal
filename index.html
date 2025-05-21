@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FoleyFilmZ Admin + Events</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: sans-serif; background-color: #0a0a0a; color: white; }
+    .event-card:hover { transform: translateY(-5px); }
+    .video-box { transition: all 0.3s ease; }
+    .video-box:hover { border-color: #3b82f6; }
+    .lock-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .rider-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  </style>
+</head>
+<body class="p-6">
+  <header class="mb-10">
+    <h1 class="text-4xl text-blue-400 font-bold mb-2">FOLEYFILMZ</h1>
+    <p class="text-lg text-gray-300">Barrel Racing Videos + Admin Panel Preview</p>
+  </header>
+
+  <section>
+    <h2 class="text-2xl font-bold mb-4 text-blue-500">Current Events</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-gray-800 p-6 rounded-lg event-card">
+        <h3 class="text-xl font-bold mb-2 text-blue-400">Texas Classic</h3>
+        <p class="text-gray-400 mb-1">Date: June 15, 2023</p>
+        <button class="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">View Riders</button>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg event-card">
+        <h3 class="text-xl font-bold mb-2 text-blue-400">National Finals</h3>
+        <p class="text-gray-400 mb-1">Date: July 22, 2023</p>
+        <button class="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">View Riders</button>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg event-card">
+        <h3 class="text-xl font-bold mb-2 text-blue-400">Rodeo Championship</h3>
+        <p class="text-gray-400 mb-1">Date: August 5, 2023</p>
+        <button class="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">View Riders</button>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg event-card">
+        <h3 class="text-xl font-bold mb-2 text-blue-400">Summer Stampede</h3>
+        <p class="text-gray-400 mb-1">Date: June 30, 2023</p>
+        <button class="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">View Riders</button>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg event-card">
+        <h3 class="text-xl font-bold mb-2 text-blue-400">Spring Showdown</h3>
+        <p class="text-gray-400 mb-1">Date: April 8, 2023</p>
+        <button class="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">View Riders</button>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg event-card">
+        <h3 class="text-xl font-bold mb-2 text-blue-400">Winter Classic</h3>
+        <p class="text-gray-400 mb-1">Date: Feb 18, 2023</p>
+        <button class="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">View Riders</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="mt-16 text-center text-sm text-gray-500">
+    Admin features (event creation, rider management, upload links) in development preview.
+  </footer>
+</body>
+</html>

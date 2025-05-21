@@ -1,0 +1,1 @@
+// Admin script placeholder for final rider/event system

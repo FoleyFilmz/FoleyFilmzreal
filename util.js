@@ -1,0 +1,1 @@
+function getEvents(){ return []; } function saveEvents(events){}

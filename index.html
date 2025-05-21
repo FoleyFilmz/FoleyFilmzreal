@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FoleyFilmZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background-color: #0a0a0a; color: white; font-family: sans-serif; }
+    .admin-btn { position: fixed; bottom: 20px; right: 20px; z-index: 50; }
+    .modal-bg { background-color: rgba(0, 0, 0, 0.8); }
+    .hidden { display: none; }
+  </style>
+</head>
+<body class="p-6">
+  <header class="mb-10">
+    <h1 class="text-4xl text-blue-400 font-bold mb-2">FOLEYFILMZ</h1>
+    <p class="text-lg text-gray-300">Barrel Racing Videos</p>
+  </header>
+
+  <section id="eventSection">
+    <h2 class="text-2xl font-bold mb-4 text-blue-500">Events</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="eventGrid">
+      <!-- Events will be added here dynamically -->
+    </div>
+  </section>
+
+  <!-- Admin Button -->
+  <button class="admin-btn bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full" onclick="document.getElementById('adminModal').classList.remove('hidden')">Admin</button>
+
+  <!-- Admin Modal -->
+  <div id="adminModal" class="hidden fixed inset-0 flex items-center justify-center modal-bg z-50">
+    <div class="bg-gray-900 p-6 rounded-lg w-full max-w-md">
+      <h2 class="text-xl font-bold mb-4 text-blue-400">Admin Login</h2>
+      <input type="text" id="adminUser" placeholder="Username" class="w-full mb-2 px-3 py-2 rounded bg-gray-800" />
+      <input type="password" id="adminPass" placeholder="Password" class="w-full mb-4 px-3 py-2 rounded bg-gray-800" />
+      <button onclick="checkLogin()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded w-full">Login</button>
+    </div>
+  </div>
+
+  <!-- Admin Panel -->
+  <div id="adminPanel" class="hidden mt-10">
+    <h2 class="text-2xl text-blue-500 mb-4">Add Event & Riders</h2>
+    <input type="text" id="categoryInput" placeholder="Category" class="block w-full mb-2 px-3 py-2 rounded bg-gray-800" />
+    <input type="text" id="eventInput" placeholder="Event Name" class="block w-full mb-2 px-3 py-2 rounded bg-gray-800" />
+    <input type="text" id="riderInput" placeholder="Rider Name" class="block w-full mb-2 px-3 py-2 rounded bg-gray-800" />
+    <input type="text" id="videoURLInput" placeholder="Video URL" class="block w-full mb-2 px-3 py-2 rounded bg-gray-800" />
+    <input type="number" id="priceInput" placeholder="Price" class="block w-full mb-2 px-3 py-2 rounded bg-gray-800" />
+    <button onclick="addRiderCard()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded w-full">Add Rider</button>
+  </div>
+
+  <script>
+    const adminUsername = "admin";
+    const adminPassword = "password123";
+
+    function checkLogin() {
+      const user = document.getElementById("adminUser").value;
+      const pass = document.getElementById("adminPass").value;
+      if (user === adminUsername && pass === adminPassword) {
+        document.getElementById("adminModal").classList.add("hidden");
+        document.getElementById("adminPanel").classList.remove("hidden");
+      } else {
+        alert("Invalid credentials");
+      }
+    }
+
+    function addRiderCard() {
+      const event = document.getElementById("eventInput").value;
+      const rider = document.getElementById("riderInput").value;
+      const url = document.getElementById("videoURLInput").value;
+      const price = document.getElementById("priceInput").value;
+
+      const card = document.createElement("div");
+      card.className = "bg-gray-800 p-4 rounded-lg";
+
+      card.innerHTML = `
+        <div class="relative pb-[56.25%] bg-gray-700 rounded mb-3 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+        </div>
+        <h3 class="font-bold mb-1">${rider}</h3>
+        <p class="text-gray-400 text-sm mb-2">Locked Video</p>
+        <button class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded transition">Buy - $${price}</button>
+      `;
+
+      document.getElementById("eventGrid").appendChild(card);
+
+      // Clear inputs
+      document.getElementById("riderInput").value = "";
+      document.getElementById("videoURLInput").value = "";
+      document.getElementById("priceInput").value = "";
+    }
+
+    // Load initial 6 events
+    window.onload = () => {
+      const events = [
+        "Texas Classic", "National Finals", "Rodeo Championship",
+        "Spring Showdown", "Winter Classic", "Summer Stampede"
+      ];
+      events.forEach(name => {
+        const card = document.createElement("div");
+        card.className = "bg-gray-800 p-6 rounded-lg event-card";
+        card.innerHTML = `
+          <h3 class="text-xl font-bold mb-2 text-blue-400">${name}</h3>
+          <p class="text-gray-400 mb-1">Date: 2025</p>
+          <button class="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition">View Riders</button>
+        `;
+        document.getElementById("eventGrid").appendChild(card);
+      });
+    };
+  </script>
+</body>
+</html>
